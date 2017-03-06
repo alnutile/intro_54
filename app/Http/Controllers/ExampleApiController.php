@@ -12,7 +12,6 @@ class ExampleApiController extends Controller
     public function handle(Request $request, $foo) {
 
         try {
-
             $items = $request->get('items');
 
             foreach ($items as $item) {
@@ -23,7 +22,7 @@ class ExampleApiController extends Controller
         } catch (\Exception $e) {
             Log::debug(sprintf("Error %s", $e->getMessage()));
 
-            return Response::json(['data' => '', 'message' => "Error with request"], 400);
+            return Response::json(['data' => '', 'message' => sprintf("Error with request %s", $e->getMessage())], 400);
         }
 
     }
