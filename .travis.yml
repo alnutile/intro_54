@@ -1,0 +1,16 @@
+language: php
+dist: trusty
+group: edge
+php:
+- '7.0'
+before_script:
+- cp .env.travis .env
+- touch database/database.sqlite
+- travis_retry composer self-update
+- travis_retry composer install --prefer-source --no-interaction --dev
+- php artisan migrate:refresh --seed
+- sleep 3
+script:
+- vendor/bin/phpunit
+deploy:
+- curl -X GET https://forge.laravel.com/servers/92421/sites/304719/deploy/http?token=fVQ8eUarYRTYFDMJxau7P2pyqofICltZGebnZvmf
