@@ -37,6 +37,7 @@ class SendEmailsJob implements ShouldQueue
     {
         //do something other than log
         foreach(range(1,5) as $index) {
+            sleep(2);
             Log::debug(sprintf("Sending email number %d", $index));
         }
     }
