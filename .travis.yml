@@ -4,11 +4,10 @@ php:
  - '7.1'
 
 cache:
- directories:
- - $CACHE_DIR
-
-install:
- - mkdir -p $CACHE_DIR
+  directories:
+    - $COMPOSER_CACHE_DIR
+    - $HOME/.composer/cache
+    - vendor
 
 before_script:
 - cp .env.travis .env
